@@ -2,7 +2,7 @@
 
 ARG UBUNTU_VERSION=24.04
 ARG GCC_VERSION=14
-ARG LLVM_VERSION=17
+ARG LLVM_VERSION=18
 
 # Base Image
 FROM docker.io/library/ubuntu:${UBUNTU_VERSION} AS base
@@ -20,7 +20,7 @@ ARG LLVM_VERSION
 # +-----------------------------+
 
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 
 
 ENV LANG en_US.utf8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -29,6 +29,7 @@ WORKDIR /tmp
 
 # Install Packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential cmake \
     gnupg2 ca-certificates software-properties-common \
     cppcheck valgrind ccache cmake wget git nano jq \
     # required by Visual Studio
@@ -155,13 +156,19 @@ RUN git clone --depth=1 \
 # +-----------------------------+
 # | CPPINSIGHTS                 |
 # +-----------------------------+
-RUN git clone https://github.com/andreasfertig/cppinsights.git \
-    && cd cppinsights \
+
+WORKDIR /tmp
+RUN git clone https://github.com/andreasfertig/cppinsights.git /tmp/cppinsights 
+RUN cd /tmp/cppinsights \
     && mkdir build \
     && cd build \
     && cmake .. \
-    && make -j$(nproc) \
-    && make install
+    && make -j4 \
+    && make install \
+    && cp -r /tmp/cppinsights /opt/cppinsights
+
+# Ensure cppinsights is available in the PATH
+ENV PATH="/opt/cppinsights/build/:${PATH}"
 
 # +-----------------------------+
 # | CLEANUP                     |
