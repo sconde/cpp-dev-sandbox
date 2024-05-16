@@ -9,29 +9,27 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				// C++
 				"ms-vscode.cpptools",
 				"ms-vscode.cpptools-extension-pack",
 				"ms-vscode.cpptools-themes",
-				// CMake
 				"ms-vscode.cmake-tools",
 				"twxs.cmake",
-				// Docker
 				"ms-azuretools.vscode-docker",
-				// Git
-        "adam-bender.commit-message-editor",
+				"adam-bender.commit-message-editor",
 				"codezombiech.gitignore",
-        "mhutchie.git-graph",
-				// Some additional extensions
-        "Gruntfuggly.todo-tree",
-        "aaron-bond.better-comments",
-				"GitHub.copilot"
+				"mhutchie.git-graph",
+				"Gruntfuggly.todo-tree",
+				"aaron-bond.better-comments",
+				"GitHub.copilot",
+				"harikrishnan94.cxx-compiler-explorer",
+				"devtbi.vscode-cppinsights",
+				"xaver.clang-format"
 			]
 		},
 		"settings": {
 			"extensions.ignoreRecommendations": true,
-			"terminal.integrated.defaultProfile.linux": "zsh",
-			"terminal.integrated.shell.linux": "/bin/zsh",
+			"terminal.integrated.defaultProfile.linux": "bash",
+			"terminal.integrated.shell.linux": "/bin/bash",
 			// tell VSCode that you want the shell to be a login, interactive shell
 			"terminal.integrated.shellArgs.linux": [
 				"-l",
