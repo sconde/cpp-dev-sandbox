@@ -88,5 +88,6 @@
   },
   // "vscode-cppinsights.buildDirectory": "${workspaceFolder}/out/build/clang-debug",
   "vscode-cppinsights.args": [],
-  "cmake.buildDirectory": ""
+  "cmake.buildDirectory": "",
+  "compilerexplorer.compilationDirectory": "${workspaceFolder}/out/build/clang-debug"
 }
