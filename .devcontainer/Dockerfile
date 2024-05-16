@@ -20,7 +20,7 @@ ARG LLVM_VERSION
 # +-----------------------------+
 
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
-	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV LANG en_US.utf8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -152,6 +152,16 @@ RUN git clone --depth=1 \
     "${VCPKG_ROOT}"/bootstrap-vcpkg.sh -disableMetrics && \
     "${VCPKG_ROOT}"/vcpkg integrate install
 
+# +-----------------------------+
+# | CPPINSIGHTS                 |
+# +-----------------------------+
+RUN git clone https://github.com/andreasfertig/cppinsights.git \
+    && cd cppinsights \
+    && mkdir build \
+    && cd build \
+    && cmake .. \
+    && make -j$(nproc) \
+    && make install
 
 # +-----------------------------+
 # | CLEANUP                     |
