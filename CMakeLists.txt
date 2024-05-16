@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Add this line to export compile commands
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+
 
 # VCPKG
 find_package(fmt CONFIG REQUIRED)

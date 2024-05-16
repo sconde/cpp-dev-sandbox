@@ -85,5 +85,8 @@
     "xstring": "cpp",
     "xtr1common": "cpp",
     "xutility": "cpp"
-  }
+  },
+  // "vscode-cppinsights.buildDirectory": "${workspaceFolder}/out/build/clang-debug",
+  "vscode-cppinsights.args": [],
+  "cmake.buildDirectory": ""
 }
