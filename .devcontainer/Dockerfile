@@ -29,7 +29,7 @@ WORKDIR /tmp
 
 # Install Packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential cmake \
+    build-essential cmake linux-tools-common linux-tools-generic \
     gnupg2 ca-certificates software-properties-common \
     cppcheck valgrind ccache cmake wget git nano jq \
     # required by Visual Studio
